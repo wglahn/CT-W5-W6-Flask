@@ -1,0 +1,39 @@
+{% extends 'base.html.j2' %}
+
+{% block title %}
+    Pokemon Team Entry
+{% endblock %}
+
+{% block content %}
+
+    <h1>Pokemon Selection</h1>
+
+    <form action="{{url_for('entry')}}" method="POST">
+        <div class="mb-3">
+            <label for="pokemonname" class="form-label">Enter Pokemon Name</label>
+            <input type="text" name="pokemonname" class="form-control" id="pokemonname">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <br>
+        <div style="color:red">{{error}}</div>
+    </form>
+
+    {% if pokemon %}
+
+    <div class="card" style="width: 15rem;">
+        <img src="{{pokemon.sprite}}" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{pokemon.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">HP = {{pokemon.hp}}</li>
+            <li class="list-group-item">Attack = {{pokemon.attack}}</li>
+            <li class="list-group-item">Defense = {{pokemon.defense}}</li>
+            <li class="list-group-item">Ability = {{pokemon.ability}}</li>
+        </ul>
+    </div>
+
+    {% endif %}
+
+{% endblock %}
